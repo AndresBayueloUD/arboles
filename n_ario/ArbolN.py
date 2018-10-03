@@ -13,7 +13,10 @@ def buscarEnArbol(nodo, valor):
         if nodo.valor == valor:
             return True
         else:
-            for n in nodo.nodos:
-                if(buscarEnArbol(n, valor)):
-                    return True
-            return False
+            return buscarEnArbol(nodo.nodos[0], valor) or buscarEnArbol2(nodo.nodos[1:len(nodo.nodos)], valor)
+
+def buscarEnArbol2(nodos, valor):
+    if len(nodos) == 0:
+        return False
+    else:
+        return buscarEnArbol(nodos[0], valor) or buscarEnArbol2(nodos[1:len(nodos)], valor)
